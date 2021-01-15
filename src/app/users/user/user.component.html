@@ -1,2 +1,7 @@
 <p>User with ID {{ user.id }} loaded.</p>
 <p>User name is {{ user.name }}</p>
+
+<!-- pass parameters as an array; the following is equivalent to "/users/1/Max" -->
+<!-- Since this routerLink is on UserComponent the component is not reloaded by 
+    default when clicking the link below (only the URL is updated); use subscribe() to update the template -->
+<a [routerLink]="['/users', 1, 'Max']">Get Max</a>
