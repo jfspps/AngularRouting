@@ -16,6 +16,8 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
+  // anything after "users/" will be stored under "args" (can use any literal here)
+  { path: 'users/:argsID/:argsName', component: UserComponent},   
   { path: 'servers', component: ServersComponent }
 ]
 
