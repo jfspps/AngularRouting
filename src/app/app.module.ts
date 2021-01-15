@@ -16,9 +16,11 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
-  // anything after "users/" will be stored under "args" (can use any literal here)
+  // anything after "users/" will be stored under "args" (can use any literal here) in UserComponent;
+  // note that the path can be executed from any component but the literal argsID and argsName are only handled by UserComponent
   { path: 'users/:argsID/:argsName', component: UserComponent},   
-  { path: 'servers', component: ServersComponent }
+  { path: 'servers', component: ServersComponent },
+  { path: 'servers/:argsID/edit', component: EditServerComponent }
 ]
 
 @NgModule({

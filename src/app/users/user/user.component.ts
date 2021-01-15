@@ -28,4 +28,6 @@ export class UserComponent implements OnInit {
     );
   }
 
+  // note here that Angular will by default unsubscribe from currentRoute when Angular
+  // exits userComponent; this can also be achieved manually by calling ngOnDestroy() (explained later)
 }

@@ -17,4 +17,9 @@ export class HomeComponent implements OnInit {
     // perform something via a backend etc...
     this.router.navigate(['/servers']);
   }
+
+  // use JS methods to build a URL string: /servers/id/edit?allowEdit=1#sectionY, where id is passed from the browser
+  loadServersID(id: number){
+    this.router.navigate(['/servers', id, 'edit'], { queryParams: { allowEdit: '1'}, fragment: 'sectionY'});
+  }
 }
