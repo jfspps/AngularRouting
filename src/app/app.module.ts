@@ -12,6 +12,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +27,11 @@ const appRoutes: Routes = [
   { path: 'servers', component: ServersComponent, children: [
     { path: ':id', component: ServerComponent },
     { path: ':argsID/edit', component: EditServerComponent }
-  ] }
+  ] },
+  { path: 'not-found', component: PageNotFoundComponent},
+  // like NodeJS, make sure the generic route below comes last!
+  { path: '**', redirectTo: '/not-found'}
+  // to redirect when using an empty path, use { path: '', redirectTo: '/not-found', pathMatch: 'full' } to avoid permanent redirection
 ]
 
 @NgModule({
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
