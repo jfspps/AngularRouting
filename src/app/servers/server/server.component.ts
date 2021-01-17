@@ -28,8 +28,9 @@ export class ServerComponent implements OnInit {
 
   onEditServer() {
     // use a relative path here (current path is "/servers/1?allowEdit=3#sectionX"); see serversComponent template
-    // note that the queryParameters are not preserved at the moment and so allowedToEdit is always false (see editServerComponent)
-    this.router.navigate(['edit'], {relativeTo: this.currentRoute});
+    // queryParamsHandling is set to preserve current queryParams and preserved when passing /servers/1/edit, for example
+    // note that the wrong server is loaded (server 1 is loaded instead of server 3) and will be fixed later
+    this.router.navigate(['edit'], {relativeTo: this.currentRoute, queryParamsHandling: 'preserve'});
   }
 
 }
