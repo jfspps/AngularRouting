@@ -9,6 +9,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
+import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
     canActivateChild: [AuthGuard],  // protect child components only (enabling canActivate would 'disable' ServersComponent)
     component: ServersComponent, children: [
       { path: ':id', component: ServerComponent },
-      { path: ':argsID/edit', component: EditServerComponent }
+      { path: ':argsID/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
     ] },
     { path: 'not-found', component: PageNotFoundComponent},
     // like NodeJS, make sure the generic route below comes last!
