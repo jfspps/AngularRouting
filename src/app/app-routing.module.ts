@@ -8,6 +8,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "./auth-guard.service";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
     ] },
     // child components are not loaded by default with <router-outlet> since this is reserved for higher-level, parent routes
     // see ServersComponent.html for an additional <router-outlet> where the child routes are loaded
-    { path: 'servers', component: ServersComponent, children: [
+    // protect all /servers routes with AuthGuard
+    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
       { path: ':id', component: ServerComponent },
       { path: ':argsID/edit', component: EditServerComponent }
     ] },
