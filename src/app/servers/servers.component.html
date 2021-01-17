@@ -4,7 +4,7 @@
       <!-- introduce queryParams to pass query URL parameters (e.g. "servers/5/edit?allowEdit=1") -->
       <!-- all shows fragment insertion (e.g. servers/5/edit?allowEdit=1#sectionX) -->
       <a
-      [routerLink]="['/servers', 5, 'edit']" 
+      [routerLink]="['/servers', server.id]" 
       [queryParams]="{ allowEdit: '1' }"
       fragment="sectionX"
         href="#"

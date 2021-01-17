@@ -20,6 +20,7 @@ const appRoutes: Routes = [
   // note that the path can be executed from any component but the literal argsID and argsName are only handled by UserComponent
   { path: 'users/:argsID/:argsName', component: UserComponent},   
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent },
   { path: 'servers/:argsID/edit', component: EditServerComponent }
 ]
 
