@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
 import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
+import { ErrorpageComponent } from "./errorpage/errorpage.component";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
       { path: ':id', component: ServerComponent },
       { path: ':argsID/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
     ] },
-    { path: 'not-found', component: PageNotFoundComponent},
+    // { path: 'not-found', component: PageNotFoundComponent},
+        { path: 'not-found', component: ErrorpageComponent, data: {message: 'Page not found!'} },
     // like NodeJS, make sure the generic route below comes last!
     { path: '**', redirectTo: '/not-found'}
     // to redirect when using an empty path, use { path: '', redirectTo: '/not-found', pathMatch: 'full' } to avoid permanent redirection
