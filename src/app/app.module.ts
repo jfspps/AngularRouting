@@ -15,13 +15,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  // anything after "users/" will be stored under "args" (can use any literal here) in UserComponent;
-  // note that the path can be executed from any component but the literal argsID and argsName are only handled by UserComponent
-  { path: 'users/:argsID/:argsName', component: UserComponent},   
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:argsID/edit', component: EditServerComponent }
+  { path: 'users', component: UsersComponent, children: [
+
+    // anything after "users/" will be stored under "args" (can use any literal here) in UserComponent;
+    // note that the path can be executed from any component but the literal argsID and argsName are only handled by UserComponent   
+    { path: ':argsID/:argsName', component: UserComponent}
+  ] },
+  // child components are not loaded by default with <router-outlet> since this is reserved for higher-level, parent routes
+  // see ServersComponent.html for an additional <router-outlet> where the child routes are loaded
+  { path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent },
+    { path: ':argsID/edit', component: EditServerComponent }
+  ] }
 ]
 
 @NgModule({

@@ -16,9 +16,9 @@
   </div>
   <div class="col-xs-12 col-sm-4">
     <button class="btn btn-primary"(click)="reloadServers()">Reload servers</button>
-    <app-edit-server></app-edit-server>
-    <hr>
-    <app-server></app-server>
+    <!-- this is where child routes and their respective components are loaded -->
+    <router-outlet></router-outlet>
+  
   </div>
 </div>
 
