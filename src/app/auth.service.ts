@@ -24,10 +24,12 @@ export class AuthService {
     }
 
     login() {
+        console.log('User logged in.')
         this.loggedIn = true;
     }
 
     logout() {
+        console.log('User logged out.')
         this.loggedIn = false;
     }
 }

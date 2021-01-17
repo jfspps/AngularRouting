@@ -25,9 +25,9 @@ export class EditServerComponent implements OnInit {
     );
     console.log(this.currentRoute.snapshot.queryParams);
     
-    console.log('EditServer fragment: ' +
-      this.currentRoute.snapshot.fragment
-    );
+    console.log('EditServer fragment: ');
+    
+    console.log(this.currentRoute.snapshot.fragment);
 
     this.currentRoute.queryParams.subscribe(
       (queryParams: Params) => {
