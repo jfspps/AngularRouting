@@ -21,7 +21,10 @@ const appRoutes: Routes = [
     // child components are not loaded by default with <router-outlet> since this is reserved for higher-level, parent routes
     // see ServersComponent.html for an additional <router-outlet> where the child routes are loaded
     // protect all /servers routes with AuthGuard
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
+    { path: 'servers',
+    // canActivate: [AuthGuard], 
+    canActivateChild: [AuthGuard],  // protect child components only (enabling canActivate would 'disable' ServersComponent)
+    component: ServersComponent, children: [
       { path: ':id', component: ServerComponent },
       { path: ':argsID/edit', component: EditServerComponent }
     ] },

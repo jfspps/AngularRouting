@@ -1,12 +1,12 @@
 // runs code before routes are passed and used here to implement route protection (auth)
 
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "./auth.service";
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
     constructor(private authService: AuthService, private router: Router){
     }
@@ -27,5 +27,12 @@ export class AuthGuard implements CanActivate {
                 }
             );
     }
+
+    // apply canActivate to child components where canActivate is set for parent components (see app-routing)
+    canActivateChild(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+            return this.canActivate(route, state);
+        }
     
 }
