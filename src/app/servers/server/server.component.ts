@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -16,12 +16,19 @@ export class ServerComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.server = this.serversService.getServer(+this.currentRoute.snapshot.params['id']);
+    // this.server = this.serversService.getServer(+this.currentRoute.snapshot.params['id']);
 
-    // respond to changes
-    this.currentRoute.params.subscribe(
-      (params: Params) => {
-        this.server = this.serversService.getServer(+params['id']);
+    // // respond to changes
+    // this.currentRoute.params.subscribe(
+    //   (params: Params) => {
+    //     this.server = this.serversService.getServer(+params['id']);
+    //   }
+    // )
+
+    // passing run-time objects prior to loading a route (compare to static loading where known, immutable compile-time objects are passed)
+    this.currentRoute.data.subscribe(
+      (data: Data) => {
+        this.server = data['serverObj'];
       }
     )
   }

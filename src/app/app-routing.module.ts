@@ -11,6 +11,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
 import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
 import { ErrorpageComponent } from "./errorpage/errorpage.component";
+import { ServerResolver } from "./servers/server/server-resolver.service";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -27,7 +28,7 @@ const appRoutes: Routes = [
     // canActivate: [AuthGuard], 
     canActivateChild: [AuthGuard],  // protect child components only (enabling canActivate would 'disable' ServersComponent)
     component: ServersComponent, children: [
-      { path: ':id', component: ServerComponent },
+      { path: ':id', component: ServerComponent, resolve: {serverObj: ServerResolver} },
       { path: ':argsID/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
     ] },
     // { path: 'not-found', component: PageNotFoundComponent},
