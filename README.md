@@ -2,13 +2,13 @@
 
 This project demonstrates routing in Angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
-
 # Absolute and relative paths
 
 Router links of the form "/somePath" are __absolute paths__ and ignore the current path of the Angular app. Router links of the form "somePath" are __relative paths__ and append the current location with a subdirectory _somePath_ and hence the full path depends on the component loaded.
 
 It is also possible to write relative paths as "./somePath", which is the same as "somePath" or "../somePath" which instructs Angular to seek the directory above the current one and then append _somePath_, in effect, "../somePath" is 'sibling' of the current path. In fact, "../currentPath" would just reload the current path in Angular (note that no http requests to a server are performed).
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
 ## Development server
 
